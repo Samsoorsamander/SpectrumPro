@@ -1,0 +1,20 @@
+/** Slim transactionLog columns for list screens (excludes heavy `items` JSON). */
+export const TX_LIST_COLUMNS = [
+  "id",
+  "date",
+  "type",
+  "customerId",
+  "companyId",
+  "employeeId",
+  "customerName",
+  "companyName",
+  "employeeName",
+  "totalAmount",
+  "paidAmount",
+  "discount",
+  "notes",
+  "oldBalance",
+  "newBalance",
+  "isDeleted",
+  "capitalKind",
+] as const;

@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "App.tsx",
+    "index.tsx",
+    "constants.tsx",
+    "db.ts",
+    "types.ts",
+    "batchFifo.ts",
+    "vite.config.ts",
+    "pages/**/*",
+    "components/**/*",
+    "contexts/**/*",
+    "utils/**/*"
+  ],
+  "exclude": ["node_modules", "dist", "src-tauri"]
+}

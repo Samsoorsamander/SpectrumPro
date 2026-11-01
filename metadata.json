@@ -1,0 +1,7 @@
+{
+  "name": "Spectrum Pro Paint Management",
+  "description": "A high-performance offline-first management system for paint and building material companies, featuring stock tracking, customer credit management, and color catalogs.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

@@ -1,0 +1,68 @@
+[package]
+name = "spectrum-pro"
+version = "1.0.0"
+description = "Spectrum Pro Paint Management System"
+authors = ["SpectrumPro"]
+edition = "2021"
+rust-version = "1.77.2"
+
+[build-dependencies]
+# Tauri 2.3.x + toml 0.8 — builds on Rust 1.77.2 for Windows 7
+tauri-build = { version = "=2.0.6", features = [] }
+tauri-utils = "=2.2.0"
+embed-resource = "=3.0.4"
+toml = "=0.8.20"
+cargo_toml = "=0.21.0"
+tauri-winres = "=0.3.1"
+
+[dependencies]
+tauri = { version = "=2.3.1", features = [] }
+tauri-utils = "=2.2.0"
+tauri-plugin-sql = { version = "=2.2.0", features = ["sqlite"] }
+tauri-plugin-log = "=2.2.0"
+tauri-plugin-fs = "=2.2.0"
+log = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+lettre = { version = "=0.11.19", default-features = false, features = ["builder", "smtp-transport", "tokio1-rustls-tls"] }
+# Pins for Rust 1.77.2 / Windows 7
+email-encoding = "=0.4.1"
+idna_adapter = "=1.2.0"
+time = "=0.3.36"
+time-core = "=0.1.2"
+time-macros = "=0.2.18"
+zeroize = "=1.8.1"
+base64ct = "=1.6.0"
+home = "=0.5.9"
+serde_spanned = "=0.6.8"
+hashbrown = "=0.15.2"
+uuid = { version = "=1.11.0", default-features = false, features = ["std", "v4"] }
+byte-unit = "=5.1.6"
+indexmap = "=2.7.1"
+plist = "=1.7.0"
+cargo_metadata = "=0.19.0"
+cargo-platform = "=0.1.8"
+toml = "=0.8.20"
+toml_edit = "=0.22.24"
+toml_datetime = "=0.6.8"
+crc = "=3.3.0"
+proc-macro-crate = "=3.3.0"
+psm = "=0.1.25"
+ar_archive_writer = "=0.4.2"
+# Keep MSRV 1.77.2 for `tauri dev` + Win7 (newer crates bump rustc)
+litemap = "=0.7.4"
+serde_with = "=3.12.0"
+serde_with_macros = "=3.12.0"
+unicode-segmentation = "=1.12.0"
+# Sync PRAGMA integrity_check for backup restore verification
+rusqlite = { version = "=0.32.1", features = ["bundled"] }
+# Native open-file dialog for restore-from-anywhere
+rfd = "=0.14.1"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+# Use dynamic WebView2Loader.dll (Win7-safe) instead of static loader
+[patch.crates-io]
+webview2-com-sys = { path = "patches/webview2-com-sys" }

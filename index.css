@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Light theme: cool muted gray surfaces (not stark white).
+ * Dark theme (html.dark) is left unchanged.
+ */
+html:not(.dark) {
+  color-scheme: light;
+  background-color: #cfd3db;
+}
+
+html:not(.dark) body {
+  background-color: #cfd3db;
+}
+
+/* Soften pure-white panels / chrome in light mode only */
+html:not(.dark) .bg-white {
+  background-color: #e2e5eb;
+}
+
+html:not(.dark) .bg-white\/80 {
+  background-color: rgb(226 229 235 / 0.88);
+}
+
+html:not(.dark) .bg-gray-50 {
+  background-color: #d6dae2;
+}
+
+html:not(.dark) .bg-gray-50\/80 {
+  background-color: rgb(214 218 226 / 0.88);
+}
+
+html:not(.dark) .bg-gray-100 {
+  background-color: #cfd3db;
+}
+
+html:not(.dark) .from-white {
+  --tw-gradient-from: #e2e5eb var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(226 229 235 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}

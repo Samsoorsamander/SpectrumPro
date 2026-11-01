@@ -1,0 +1,18 @@
+{
+  "bundle": {
+    "resources": {
+      "win7-redist/WebView2Loader.dll": "WebView2Loader.dll",
+      "win7-redist/vc_redist.x86.exe": "resources/vc_redist.x86.exe",
+      "Microsoft.WebView2.FixedVersionRuntime.109.0.1518.78.x86": "Microsoft.WebView2.FixedVersionRuntime.109.0.1518.78.x86"
+    },
+    "windows": {
+      "webviewInstallMode": {
+        "type": "fixedRuntime",
+        "path": "Microsoft.WebView2.FixedVersionRuntime.109.0.1518.78.x86"
+      },
+      "nsis": {
+        "installerHooks": "./windows/hooks.nsh"
+      }
+    }
+  }
+}

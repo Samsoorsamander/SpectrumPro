@@ -1,0 +1,47 @@
+{
+  "name": "spectrum-pro-paint-management",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.app.json",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "build:desktop": "cross-env CI=false tauri build",
+    "build:win7": "npm run fetch:vcredist-x86 && npm run prep:win7-crates && cross-env CI=false CARGO_NET_OFFLINE=true RUSTFLAGS=-Ctarget-feature=+crt-static STATIC_VCRUNTIME=true tauri build --target i686-pc-windows-msvc --config src-tauri/tauri.win7.conf.json -- --ignore-rust-version",
+    "prep:win7-crates": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -File scripts/prep-win7-crates.ps1",
+    "fetch:webview2-win7": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -File scripts/fetch-webview2-win7.ps1",
+    "fetch:vcredist-x86": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -File scripts/fetch-vcredist-x86.ps1",
+    "copy:webview2-loader": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -File scripts/copy-webview2-loader.ps1",
+    "patch:win7-crates": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -File scripts/patch-edition2024-for-win7.ps1"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "~2.3.0",
+    "@tauri-apps/plugin-sql": "2.2.0",
+    "@tauri-apps/plugin-log": "2.2.0",
+    "@tauri-apps/plugin-fs": "2.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.0",
+    "lucide-react": "^0.462.0",
+    "framer-motion": "^12.27.1",
+    "recharts": "^2.15.0",
+    "dexie": "^4.2.1",
+    "jspdf": "^2.5.1",
+    "html2canvas": "^1.4.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "@tauri-apps/cli": "~2.3.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  }
+}
